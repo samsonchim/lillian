@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -29,17 +30,14 @@ import { ScrollArea } from './ui/scroll-area';
 
 const moodOptions = [
   "Happy", "Sad", "Reflective", "Excited", "Joyful", "Content", "Grateful", "Hopeful", "Peaceful", "Playful", "Proud", "Confident", "Curious", "Inspired", "Optimistic", "Amused", "Loving", "Energetic", 
-  // "Angry", "Anxious", "Frustrated", "Lonely", "Depressed", "Jealous", "Embarrassed", "Guilty", "Irritated", "Overwhelmed", "Annoyed", "Bitter", "Fearful", "Regretful", // Omitting negative moods for a love note app unless specified
   "Thoughtful", "Pensive", 
-  // "Conflicted", "Indifferent", "Numb", "Apathetic", "Skeptical", "Uncertain", // Omitting neutral/negative moods
   "Surprised", "Furious", "Euphoric", "Desperate", "Ecstatic", 
-  // "Devastated", "Shocked", "Enraged", "Terrified", "Obsessive", "Hysterical" // Omitting highly negative/intense moods
 ].sort();
 
 
 const FormSchema = z.object({
   mood: z.string({
-    required_error: "Please select a mood to inspire your note.",
+    required_error: "Please select a mood to inspire Samson's note.",
   }).min(1, "Please select a mood."),
 });
 
@@ -72,7 +70,7 @@ export function LoveNoteForm() {
       toast({
         variant: "destructive",
         title: "Oh dear! A little hiccup.",
-        description: "There was a problem whispering your feelings. Please try again.",
+        description: "There was a problem channeling Samson's feelings. Please try again.",
       });
       setShowInitialHeart(true); // Show heart again if error
     } finally {
@@ -86,9 +84,9 @@ export function LoveNoteForm() {
         <div className="flex items-center justify-center mb-2">
           <Heart className="w-10 h-10 text-primary animate-pulse-love" />
         </div>
-        <CardTitle className="font-headline text-4xl text-primary-foreground">Lillian's Love Notes</CardTitle>
+        <CardTitle className="font-headline text-4xl text-primary-foreground">Messages from Samson</CardTitle>
         <CardDescription className="font-body text-primary-foreground/80 text-base pt-1">
-          Craft a special message for Samson, filled with your chosen emotion.
+          Lillian, select a mood to receive a heartfelt love note from Samson, written just for you.
         </CardDescription>
       </CardHeader>
       <CardContent className="p-6 md:p-8">
@@ -99,13 +97,13 @@ export function LoveNoteForm() {
               name="mood"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-headline text-lg text-primary-foreground/90">Choose a Mood</FormLabel>
+                  <FormLabel className="font-headline text-lg text-primary-foreground/90">Choose a Mood for Samson's Note</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
                     <FormControl>
                       <SelectTrigger 
-                        aria-label="Select mood" 
+                        aria-label="Select mood for Samson's note" 
                         className="font-body text-base border-input-border focus:border-accent focus:ring-accent">
-                        <SelectValue placeholder="Select a mood that reflects your heart..." />
+                        <SelectValue placeholder="Select a mood to inspire Samson..." />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="font-body bg-popover border-primary/50">
@@ -126,12 +124,12 @@ export function LoveNoteForm() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Crafting with love...
+                  Channeling Samson's words...
                 </>
               ) : (
                 <>
                   <Wand2 className="mr-2 h-5 w-5" />
-                  Generate Love Note
+                  Generate Note from Samson
                 </>
               )}
             </Button>
@@ -141,13 +139,13 @@ export function LoveNoteForm() {
         {showInitialHeart && !generatedMessage && !isLoading && (
           <div className="text-center mt-12 py-8">
             <Heart className="w-16 h-16 text-primary/50 mx-auto animate-pulse-heart" />
-            <p className="mt-4 font-body text-primary-foreground/70">Waiting for your inspiration...</p>
+            <p className="mt-4 font-body text-primary-foreground/70">Waiting for your inspiration, Lillian...</p>
           </div>
         )}
         
         {generatedMessage && (
           <div key={messageKey} className="mt-10 p-6 border border-primary/40 rounded-xl bg-background/60 shadow-lg animate-in fade-in-0 zoom-in-95 duration-700">
-            <h3 className="font-headline text-2xl text-primary mb-4 text-center">Your Love Note:</h3>
+            <h3 className="font-headline text-2xl text-primary mb-4 text-center">A Note from Samson to You, Lillian:</h3>
             <ScrollArea className="h-auto max-h-[300px] p-1">
               <p className="text-primary-foreground/90 whitespace-pre-wrap font-body text-lg leading-relaxed text-justify">
                 {generatedMessage}
@@ -161,7 +159,7 @@ export function LoveNoteForm() {
       </CardContent>
       <CardFooter className="p-4 bg-primary/10 border-t border-primary/20 text-center">
         <p className="font-body text-sm text-primary-foreground/70 mx-auto">
-          Lovingly crafted by Lillian for Samson.
+          A special message from Samson to Lillian, inspired by your chosen mood.
         </p>
       </CardFooter>
     </Card>

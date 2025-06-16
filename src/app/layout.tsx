@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -5,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Lillian's Love Notes",
-  description: 'Generate personalized love messages for Samson.',
+  description: 'Lillian, generate personalized love messages from Samson to you.',
 };
 
 export default function RootLayout({
