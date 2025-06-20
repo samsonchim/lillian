@@ -1,5 +1,3 @@
-# Firebase Studio
+# A little Program for the Love of my Life
 
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+Made this app that generates Love messages for my Girlfriend based on her selected mood, Demo at https://lillian-love.vercel.app/
